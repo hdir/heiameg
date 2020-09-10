@@ -189,10 +189,6 @@ Combined request for messages after certain date which have been modified after 
 /api/messages?since={DATETIMETICKS}&modifiedSince={DATETIMETICKS}&apikey={APIKEY}
 ```
 
-## Maintainers
-
-Originally written by @anders.havskjold
-
 ## Licenses
 
 - [MvvmCross - MS-PL](https://opensource.org/licenses/ms-pl.html)
