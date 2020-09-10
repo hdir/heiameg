@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+                 xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                 xmlns:settings="clr-namespace:HeiaMeg.Pages.Settings;assembly=HeiaMeg"
+                 mc:Ignorable="d"
+                 x:Class="HeiaMeg.Pages.Modals.TermsPopupPage"
+                 HasSystemPadding="True"
+                 BackgroundColor="White">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White"
+              RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                   Text="Vilkår"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="{x:Static resources:Sizes.Title}" />
+            <BoxView Grid.Row="0"
+                     HeightRequest="1"
+                     VerticalOptions="End"
+                     HorizontalOptions="Fill"
+                     Color="{x:Static resources:Colors.MessageTitleSplit}" />
+            <forms:SvgCachedImage Grid.Row="0"
+                                  Source="{x:Static resources:Images.Back}"
+                                  HorizontalOptions="Start"
+                                  VerticalOptions="Center"
+                                  Aspect="AspectFit"
+                                  HeightRequest="24"
+                                  Margin="20, 0">
+
+                <forms:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                </forms:SvgCachedImage.GestureRecognizers>
+
+            </forms:SvgCachedImage>
+
+            <settings:TermsView  Grid.Row="1"
+                                 Padding="20, 0" />
+        </Grid>
+    </ContentPage.Content>
+</pages:PopupPage>

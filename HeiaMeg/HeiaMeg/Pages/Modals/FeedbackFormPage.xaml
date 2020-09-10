@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="HeiaMeg.Pages.Modals.FeedbackFormPage">
+    <ContentPage.Content>
+
+        <Grid HorizontalOptions="Fill"
+              VerticalOptions="Fill"
+              BackgroundColor="White"
+              RowSpacing="30"
+              Padding="20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- TITLE -->
+            <Grid Grid.Row="0"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Start">
+
+                <forms:SvgCachedImage x:Name="BackButton"
+                                      HorizontalOptions="Start"
+                                      VerticalOptions="Center"
+                                      HeightRequest="20"
+                                      Aspect="AspectFit"
+                                      Source="{x:Static resources:Images.Back}">
+                    <forms:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Back_OnTapped" />
+                    </forms:SvgCachedImage.GestureRecognizers>
+                </forms:SvgCachedImage>
+
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="Tilbakemelding"
+                       TextColor="{x:Static resources:Colors.MessageTitle}"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="{x:Static resources:Sizes.Title}" />
+            </Grid>
+
+            <ScrollView Grid.Row="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill">
+
+                <StackLayout Spacing="30"
+                             HorizontalOptions="Fill"
+                             VerticalOptions="CenterAndExpand">
+
+                    <!-- SUB TITLE -->
+                    <Label HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           Text="Det var leit, hva likte du ikke?" />
+
+                    <!-- ALTERNATIVES -->
+                    <StackLayout Spacing="8"
+                                 Margin="0, 8">
+
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="Fill">
+                            <Label x:Name="Alt1"
+                                   Text="Umotiverende"
+                                   HorizontalOptions="StartAndExpand" />
+                            <Switch x:Name="Alt1Switch"
+                                    HorizontalOptions="End"
+                                    OnColor="{x:Static resources:Colors.NewMessageColor}" />
+                        </StackLayout>
+                        <BoxView HeightRequest="1"
+                                 Color="{x:Static resources:Colors.MessageTitleSplit}" />
+
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="Fill">
+                            <Label x:Name="Alt2"
+                                   Text="Ikke interessant"
+                                   HorizontalOptions="StartAndExpand" />
+                            <Switch x:Name="Alt2Switch"
+                                    HorizontalOptions="End"
+                                    OnColor="{x:Static resources:Colors.NewMessageColor}" />
+                        </StackLayout>
+                        <BoxView HeightRequest="1"
+                                 Color="{x:Static resources:Colors.MessageTitleSplit}" />
+
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="Fill">
+                            <Label x:Name="Alt3"
+                                   Text="Upassende"
+                                   HorizontalOptions="StartAndExpand" />
+                            <Switch x:Name="Alt3Switch"
+                                    HorizontalOptions="End"
+                                    OnColor="{x:Static resources:Colors.NewMessageColor}" />
+                        </StackLayout>
+                        <BoxView HeightRequest="1"
+                                 Color="{x:Static resources:Colors.MessageTitleSplit}" />
+
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="Fill">
+                            <Label x:Name="Alt4"
+                                   Text="Forvirrende"
+                                   HorizontalOptions="StartAndExpand" />
+                            <Switch x:Name="Alt4Switch"
+                                    HorizontalOptions="End"
+                                    OnColor="{x:Static resources:Colors.NewMessageColor}" />
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <!-- EDIT TEXTBOX -->
+
+                    <Frame x:Name="EntryContainer"
+                           BackgroundColor="DarkGray"
+                           HorizontalOptions="Fill"
+                           HeightRequest="100"
+                           HasShadow="False"
+                           CornerRadius="5"
+                           Padding="0"
+                           BorderColor="DarkGray">
+
+                        <Editor x:Name="FreeText"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill"
+                                FocusChangeRequested="EntryContainer_OnFocusChangeRequested" />
+                    </Frame>
+
+                    <!-- SUBMIT -->
+
+                    <Frame x:Name="Submit"
+                           BackgroundColor="{x:Static resources:Colors.NewMessageColor}"
+                           HorizontalOptions="Center"
+                           HeightRequest="40"
+                           HasShadow="False"
+                           CornerRadius="20"
+                           Padding="20, 0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Submit_OnTapped" />
+                        </Frame.GestureRecognizers>
+
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="White"
+                               Text="Send tilbakemelding"
+                               InputTransparent="True" />
+                    </Frame>
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

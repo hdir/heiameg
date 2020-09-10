@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about_final_text" xml:space="preserve">
+    <value>Appen er levert av</value>
+  </data>
+  <data name="about_text" xml:space="preserve">
+    <value>Det er mange som mener noe om hva nettopp DU bør ta tak i, men du har sikkert kjent at velmente formaninger ikke akkurat tenner gnisten i deg? En forutsetning for å lykkes med endringer er at det kommer innenfra – at du virkelig kjenner at dette er noe DU vil. Bare du kan starte endringer i ditt eget liv. Heia meg-appen er ditt daglige heiarop. 
+
+Når du har lasta ned appen velger du hva DU vil ta tak i. Så får du en melding hver dag som minner deg på det du har bestemt deg for og gir deg litt ekstra krefter de dagene viljestyrken mangler. Vi heier på deg – med appen heier du på deg selv.
+
+Rådene om søvn er utviklet i samarbeid med Nasjonal kompetansetjeneste for søvnsykdommer.</value>
+  </data>
+  <data name="about_title" xml:space="preserve">
+    <value>Om appen</value>
+  </data>
+  <data name="tab_archive" xml:space="preserve">
+    <value>Meldinger</value>
+  </data>
+  <data name="tab_archive_title" xml:space="preserve">
+    <value>Meldinger</value>
+  </data>
+  <data name="tab_favorites" xml:space="preserve">
+    <value>Favoritter</value>
+  </data>
+  <data name="tab_favorites_title" xml:space="preserve">
+    <value>Dine favoritter</value>
+  </data>
+  <data name="tab_new" xml:space="preserve">
+    <value>Nye</value>
+  </data>
+  <data name="tab_new_title" xml:space="preserve">
+    <value>Nye meldinger</value>
+  </data>
+  <data name="tab_settings" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="tab_settings_title" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="terms_1_0_text" xml:space="preserve">
+    <value>Helsedirektoratet
+Vitaminveien 4
+0485 Oslo</value>
+  </data>
+  <data name="terms_1_0_title" xml:space="preserve">
+    <value>App-eier (dataeier)</value>
+  </data>
+  <data name="terms_2_0_text" xml:space="preserve">
+    <value>Heia meg baserer seg på brukernes valg av temaer de ønsker å følge. På bakgrunn av disse valgene vil appen automatisk sende deg råd og motivasjon om tema du har valgt.</value>
+  </data>
+  <data name="terms_2_0_title" xml:space="preserve">
+    <value>Visualisering av dine data</value>
+  </data>
+  <data name="terms_3_0_text" xml:space="preserve">
+    <value>Som de fleste nettsider og apper har vi informasjonskapsler plassert i appen. Formålet med disse er å kunne gi en bedre brukeropplevelse basert på hvordan appen brukes. Vi sparer ikke på andre data enn det bruker selv har gitt (fornavn). Det er ingen personlige data lagret i appen.
+I tillegg benytter vi informasjonskapsler for å effektivisere annonseringen av appen og måle hvor brukeren kommer fra.
+Data blir ikke delt med andre tredjepartsaktører utover det vi beskriver under.</value>
+  </data>
+  <data name="terms_3_0_title" xml:space="preserve">
+    <value>Informasjonskapsler</value>
+  </data>
+  <data name="terms_3_1_text" xml:space="preserve">
+    <value>Vi benytter AppCenter (https://appcenter.ms) for å måle hvilke deler av appen som brukes. Vi bruker denne innsikten til å oppgradere appen for å gi brukeren et bedre verktøy.</value>
+  </data>
+  <data name="terms_3_1_title" xml:space="preserve">
+    <value>AppCenter</value>
+  </data>
+  <data name="terms_3_2_text" xml:space="preserve">
+    <value>Adform (https://www.adform.com) er et annonsestyringsverktøy vi bruker for å promotere appen og som gir oss innsikt i hvor brukeren kommer fra.</value>
+  </data>
+  <data name="terms_3_2_title" xml:space="preserve">
+    <value>Adform</value>
+  </data>
+  <data name="terms_3_3_text" xml:space="preserve">
+    <value>Vi promoterer appen gjennom Facebook. På samme måte som Adform gir Facebook analytics oss innsikt i bruken og nedlasting av appen (https://facebook.com/about/privacy).</value>
+  </data>
+  <data name="terms_3_3_title" xml:space="preserve">
+    <value>Facebook analytics</value>
+  </data>
+  <data name="theme_alcohol_description" xml:space="preserve">
+    <value>Det beste for helsa er å begrense alkoholinntaket. Det betyr å begrense antall glass ved de anledningene du drikker – og å sørge for at uka har flest "hvite" dager. Det beste du kan gjøre er å lage dine egne "drikkeregler" – som for eksempel "vann på hverdager".</value>
+  </data>
+  <data name="theme_alcohol_name" xml:space="preserve">
+    <value>Alkohol</value>
+  </data>
+  <data name="theme_alcohol_title" xml:space="preserve">
+    <value>Drikke mindre alkohol</value>
+  </data>
+  <data name="theme_diet_description" xml:space="preserve">
+    <value>God planlegging er halve jobben. Lag en ukemeny, ta med handleliste i butikken og ha med matpakke på farten. Da unngår du spontane mellommåltider og er bedre rustet når du har mindre viljestyrke.</value>
+  </data>
+  <data name="theme_diet_name" xml:space="preserve">
+    <value>Kosthold</value>
+  </data>
+  <data name="theme_diet_title" xml:space="preserve">
+    <value>Få et sunnere kosthold</value>
+  </data>
+  <data name="theme_exercise_description" xml:space="preserve">
+    <value>Faste rutiner er din beste venn – da slipper du å bruke energi på å finne motivasjon hver gang. Bygg rutiner over noen uker – så går det etter hvert på autopilot. Og husk at ALT er bedre enn ingenting!</value>
+  </data>
+  <data name="theme_exercise_name" xml:space="preserve">
+    <value>Fysisk Aktivitet</value>
+  </data>
+  <data name="theme_exercise_title" xml:space="preserve">
+    <value>Komme i bedre form</value>
+  </data>
+  <data name="theme_mentality_description" xml:space="preserve">
+    <value>Alle har tunge perioder, men fem grep kan gjøre deg mer robust når de litt blå dagene kommer. Meldingene vil minne deg på å knytte bånd til andre, være aktiv, være oppmerksom, fortsette å lære og å gi til andre.</value>
+  </data>
+  <data name="theme_mentality_name" xml:space="preserve">
+    <value>Psykisk Helse</value>
+  </data>
+  <data name="theme_mentality_title" xml:space="preserve">
+    <value>Bli sterkere psykisk</value>
+  </data>
+  <data name="theme_sleep_description" xml:space="preserve">
+    <value>De aller fleste har problemer med å sove innimellom, men ikke alle tar tak for å gjøre endringer som kan gi bedre søvn.</value>
+  </data>
+  <data name="theme_sleep_name" xml:space="preserve">
+    <value>Søvn</value>
+  </data>
+  <data name="theme_sleep_title" xml:space="preserve">
+    <value>Få bedre søvnvaner</value>
+  </data>
+  <data name="theme_smoking_description" xml:space="preserve">
+    <value>Å stumpe røyken er kanskje det aller beste du kan gjøre for helsa di. Du bør være forberedt på at de første dagene blir vanskelig – så blir det gradvis lettere etter hvert. Legg til rette for å lykkes – sørg for å ha aktiviteter eller noe å tygge på som avleder deg om du har røyksug.</value>
+  </data>
+  <data name="theme_smoking_name" xml:space="preserve">
+    <value>Tobakk</value>
+  </data>
+  <data name="theme_smoking_title" xml:space="preserve">
+    <value>Slutte med røyk</value>
+  </data>
+</root>

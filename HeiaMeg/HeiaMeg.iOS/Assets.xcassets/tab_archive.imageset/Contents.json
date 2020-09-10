@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "scale": "1x",
+      "idiom": "iphone",
+      "filename": "archive_fill2.png"
+    },
+    {
+      "scale": "2x",
+      "idiom": "iphone",
+      "filename": "archive_fill@2x.png"
+    },
+    {
+      "scale": "3x",
+      "idiom": "iphone",
+      "filename": "archive_fill@3x.png"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "archive_fill1.pdf"
+    }
+  ],
+  "properties": {},
+  "info": {
+    "version": 1,
+    "author": ""
+  }
+}

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:onboarding="clr-namespace:HeiaMeg.ViewModels.Items.Onboarding;assembly=HeiaMeg"
+             xmlns:theme1="clr-namespace:HeiaMeg.ViewModels.Items.Theme;assembly=HeiaMeg"
+             xmlns:custom="clr-namespace:HeiaMeg.ViewControls.Custom;assembly=HeiaMeg"
+             xmlns:theme="clr-namespace:HeiaMeg.Pages.Theme;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance onboarding:OnboardingThemeSelectionViewModel}"
+             x:Class="HeiaMeg.Pages.Onboarding.OnboardingThemeSelectionView">
+    <ContentView.Content>
+
+        <Grid HorizontalOptions="Fill"
+              VerticalOptions="Fill"
+              RowSpacing="20"
+              Margin="20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- TITLE -->
+            <Label Text="Ønsker du å..."
+                   FontSize="{x:Static resources:Sizes.TitleLarge}"
+                   TextColor="{x:Static resources:Colors.OnboardingText}"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   MaxLines="1"
+                   LineBreakMode="TailTruncation"
+                   Margin="-10"
+                   Grid.Row="0" />
+
+            <!-- THEMES -->
+            <custom:ThemeGridView Grid.Row="1"
+                                  ItemsSource="{Binding Themes}"
+                                  ItemTapped="{Binding ItemTappedCommand}"
+                                  VerticalOptions="Fill"
+                                  HorizontalOptions="Fill"
+                                  Margin="0, 0, 0, 40"
+                                  ColumnSpacing="10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <custom:ThemeGridView.ItemTemplate>
+                    <DataTemplate>
+                        <theme:ThemeItemView x:Name="ThemeItemTemplateView"
+                                              d:DataContext="{d:DesignInstance theme1:ThemeViewModel}"
+                                              IsSelected="{Binding IsSelected}"
+                                              Icon="{Binding Icon}"
+                                              Text="{Binding Title}"
+                                              CircleColor="White" />
+                    </DataTemplate>
+                </custom:ThemeGridView.ItemTemplate>
+            </custom:ThemeGridView>
+
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

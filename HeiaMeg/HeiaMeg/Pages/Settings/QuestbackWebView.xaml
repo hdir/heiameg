@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:heiaMeg="clr-namespace:HeiaMeg;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             x:Class="HeiaMeg.Pages.Settings.QuestbackWebView">
+    <ContentView.Content>
+        <Grid>
+            <WebView x:Name="WebView"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"
+                     Source="{x:Static heiaMeg:Config.FeedbackUrl}"
+                     Navigated="WebView_OnNavigated" />
+
+            <StackLayout x:Name="InfoView"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+
+                <ActivityIndicator x:Name="Spinner"
+                                   HorizontalOptions="Center"
+                                   IsRunning="True" />
+
+                <Label x:Name="TextLabel"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       Text="Laster" />
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

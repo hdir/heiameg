@@ -1,0 +1,167 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\app_icon.svg" />
+    <None Remove="Resources\Images\app_icon_small_blue.svg" />
+    <None Remove="Resources\Images\arrow_back.svg" />
+    <None Remove="Resources\Images\checkmark_soft.svg" />
+    <None Remove="Resources\Images\heart.svg" />
+    <None Remove="Resources\Images\heart_fill.svg" />
+    <None Remove="Resources\Images\heart_heia.svg" />
+    <None Remove="Resources\Images\helsedirektoratet.svg" />
+    <None Remove="Resources\Images\pen_edit_name.svg" />
+    <None Remove="Resources\Images\plus.svg" />
+    <None Remove="Resources\Images\share.svg" />
+    <None Remove="Resources\Images\Themes\beer.svg" />
+    <None Remove="Resources\Images\Themes\brain.svg" />
+    <None Remove="Resources\Images\Themes\cutlery.svg" />
+    <None Remove="Resources\Images\Themes\jogging.svg" />
+    <None Remove="Resources\Images\Themes\no-smoking.svg" />
+    <None Remove="Resources\Images\Themes\sleep.svg" />
+    <None Remove="Resources\Images\thumbsdown.svg" />
+    <None Remove="Resources\Images\thumbsup.svg" />
+    <None Remove="Resources\Images\trash.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\app_icon.svg" />
+    <EmbeddedResource Include="Resources\Images\app_icon_small_blue.svg" />
+    <EmbeddedResource Include="Resources\Images\arrow_back.svg" />
+    <EmbeddedResource Include="Resources\Images\checkmark_soft.svg" />
+    <EmbeddedResource Include="Resources\Images\heart.svg" />
+    <EmbeddedResource Include="Resources\Images\heart_fill.svg" />
+    <EmbeddedResource Include="Resources\Images\heart_heia.svg" />
+    <EmbeddedResource Include="Resources\Images\helsedirektoratet.svg" />
+    <EmbeddedResource Include="Resources\Images\pen_edit_name.svg" />
+    <EmbeddedResource Include="Resources\Images\Options\share.svg" />
+    <EmbeddedResource Include="Resources\Images\plus.svg" />
+    <EmbeddedResource Include="Resources\Images\Themes\beer.svg" />
+    <EmbeddedResource Include="Resources\Images\Themes\brain.svg" />
+    <EmbeddedResource Include="Resources\Images\Themes\sleep.svg" />
+    <EmbeddedResource Include="Resources\Images\Themes\cutlery.svg" />
+    <EmbeddedResource Include="Resources\Images\Themes\jogging.svg" />
+    <EmbeddedResource Include="Resources\Images\Themes\no-smoking.svg" />
+    <EmbeddedResource Include="Resources\Images\Options\thumbsdown.svg" />
+    <EmbeddedResource Include="Resources\Images\Options\thumbsup.svg" />
+    <EmbeddedResource Include="Resources\Images\Options\trash.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CardsView" Version="2.2.1" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.1" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.6.4" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.6.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.1-beta" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.258-beta" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="4.1.0-beta" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.778463" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\Message\EmptyMessageView.xaml.cs">
+      <DependentUpon>EmptyMessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AppText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Onboarding\OnboardingThemeSelectionView.xaml.cs">
+      <DependentUpon>OnboardingThemeSelectionView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\ArchivePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\FavoritesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Modals\FeedbackFormPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Modals\TermsPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Modals\ThemeDetailsPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\OnboardingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Modals\UpdatingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Settings\DebugView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\AppText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Message\EmptyMessageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Settings\AboutView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Settings\QuestbackWebView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Settings\SettingsListItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Settings\SettingsThemeSelectionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Settings\TermsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Message\MessageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Theme\ThemeItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\OnboardingThemeSelectionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\OnboardingTermsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\OnboardingWelcomeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewControls\OptionsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewControls\TabItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Items\Message\" />
+  </ItemGroup>
+
+  <Import Project="..\..\HeiaMeg.Shared\HeiaMeg.Shared.projitems" Label="Shared" />
+
+</Project>

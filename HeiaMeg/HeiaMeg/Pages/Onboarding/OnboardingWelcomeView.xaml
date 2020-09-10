@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:onboarding="clr-namespace:HeiaMeg.ViewModels.Items.Onboarding;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             x:Class="HeiaMeg.Pages.Onboarding.OnboardingWelcomeView">
+
+    <ContentView.Content>
+        <Grid d:DataContext="{d:DesignInstance onboarding:OnboardingWelcomeViewModel}">
+            <ScrollView Padding="30, 0"
+                        VerticalScrollBarVisibility="Always">
+                <StackLayout x:Name="ContentStackLayout"
+                             HorizontalOptions="Fill"
+                             VerticalOptions="Fill"
+                             Spacing="20"
+                             Padding="0, 20">
+
+                    <!-- ICON -->
+                    <ContentView x:Name="IconView"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 HeightRequest="70"
+                                 WidthRequest="70"
+                                 Margin="0, 0, 0, -35"/>
+
+                    <!-- BUG for Android API < 23
+                    <forms:SvgCachedImage HorizontalOptions="End"
+                                          VerticalOptions="Start"
+                                          HeightRequest="70"
+                                          WidthRequest="70"
+                                          Margin="0, 0, 0, -35"
+                                          Aspect="AspectFit"
+                                          Source="{x:Static resources:Images.TabTopIconDefault}" />
+                    -->
+
+                    <!-- CENTER CONTAINER -->
+                    <StackLayout HorizontalOptions="Fill"
+                                 VerticalOptions="CenterAndExpand"
+                                 Spacing="20"
+                                 Padding="0, 0, 0, 20">
+
+                        <StackLayout x:Name="TextContainer"
+                                     HorizontalOptions="Fill"
+                                     VerticalOptions="Start"
+                                     Spacing="20">
+
+                            <!-- TITLE -->
+                            <Label Text="Du er i gang!"
+                                   FontSize="{x:Static resources:Sizes.TitleLarge}"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Start" />
+
+                            <!-- TEXT -->
+                            <Label Text="Vil du spise sunnere, bevege deg mer, kutte ned på alkohol, stumpe røyken eller bli sterkere psykisk?"
+                                   HorizontalOptions="Fill"
+                                   FontSize="{x:Static resources:Sizes.TextMedium}"
+                                   LineHeight="1.25" />
+                            <!-- TEXT -->
+                            <Label Text="Denne appen hjelper deg i gang og gir deg daglige tips, heiarop eller praktiske råd som kan hjelpe deg på vei."
+                                   HorizontalOptions="Fill"
+                                   FontSize="{x:Static resources:Sizes.TextMedium}"
+                                   LineHeight="1.25" />
+
+                        </StackLayout>
+
+                        <!-- NAME INPUT -->
+                        <Grid x:Name="EntryContainer"
+                              VerticalOptions="Start"
+                              Margin="0, 16, 0, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <!-- NAME -->
+                            <Label Grid.Row="0"
+                                   Text="Hva er fornavnet ditt?"
+                                   FontSize="{x:Static resources:Sizes.TextMedium}"
+                                   FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="EntryLabel_OnTapped"/>
+                                </Label.GestureRecognizers>
+
+                            </Label>
+
+                            <Entry x:Name="EntryView"
+                                   Grid.Row="1"
+                                   Text="{Binding Name, Mode=TwoWay}"
+                                   TextColor="{x:Static resources:Colors.OnboardingText}"
+                                   FontSize="{x:Static resources:Sizes.Title}"
+                                   FontAttributes="Bold"
+                                   Keyboard="Text"
+                                   Focused="EntryView_OnFocused"
+                                   Unfocused="EntryView_OnUnfocused"
+                                   IsTextPredictionEnabled="False"
+                                   IsSpellCheckEnabled="False"
+                                   Completed="EntryView_OnCompleted"
+                                   ReturnType="Done"
+                                   FocusChangeRequested="VisualElement_OnFocusChangeRequested">
+                                <Entry.Margin>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="Android"
+                                                Value="0" />
+                                            <On Platform="iOS"
+                                                Value="0, 6" />
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Entry.Margin>
+                            </Entry>
+
+                            <!--LINE-->
+                            <BoxView Grid.Row="1"
+                                     HeightRequest="1"
+                                     HorizontalOptions="Fill"
+                                     VerticalOptions="End"
+                                     Color="{x:Static resources:Colors.OnboardingText}" />
+                        </Grid>
+
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

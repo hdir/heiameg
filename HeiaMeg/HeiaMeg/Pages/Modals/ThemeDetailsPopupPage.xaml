@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+                 xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                 xmlns:theme="clr-namespace:HeiaMeg.ViewModels.Items.Theme;assembly=HeiaMeg"
+                 mc:Ignorable="d"
+                 d:DataContext="{d:DesignInstance theme:ThemeViewModel}"
+                 x:Class="HeiaMeg.Pages.Modals.ThemeDetailsPopupPage">
+    <ContentPage.Content>
+
+        <ScrollView HorizontalOptions="Fill"
+                    VerticalOptions="Center">
+            <Grid HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Padding="30"
+                  Margin="20">
+
+                <BoxView CornerRadius="20"
+                         BackgroundColor="{x:Static resources:Colors.ModalBackground}"
+                         Margin="-30" />
+
+                <Grid HorizontalOptions="End"
+                      VerticalOptions="Start"
+                      TranslationX="10"
+                      TranslationY="-10"
+                      HeightRequest="30"
+                      WidthRequest="30">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Close_Tapped" />
+                    </Grid.GestureRecognizers>
+
+                    <Label x:Name="Cross"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Fill"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           TextColor="{x:Static resources:Colors.Text}"
+                           FontAttributes="Bold"
+                           Rotation="45"
+                           FontSize="22">
+                        <Label.Text>&#xFF0B;</Label.Text>
+                    </Label>
+                </Grid>
+
+                <StackLayout HorizontalOptions="Fill"
+                             VerticalOptions="Center"
+                             InputTransparent="True"
+                             Spacing="10"
+                             Padding="0, 20">
+
+                    <!--ICON-->
+                    <forms:SvgCachedImage Source="{Binding Icon}"
+                                          HeightRequest="40"
+                                          WidthRequest="40"
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"
+                                          Aspect="AspectFit" />
+                    <!--TITLE-->
+                    <Label HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding Title}"
+                           FontSize="{x:Static resources:Sizes.TextLarge}"
+                           FontAttributes="Bold"
+                           TextColor="{x:Static resources:Colors.ModalForeground}" />
+
+                    <!--STRIPE-->
+                    <BoxView HeightRequest="1"
+                             HorizontalOptions="Center"
+                             Color="{x:Static resources:Colors.NewMessageColor}"
+                             WidthRequest="80" />
+
+                    <!--TEXT-->
+                    <Label HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding Description}"
+                           FontSize="{x:Static resources:Sizes.TextMedium}"
+                           TextColor="{x:Static resources:Colors.ModalForeground}"
+                           LineHeight="1.1" />
+
+                </StackLayout>
+
+            </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+</pages:PopupPage>

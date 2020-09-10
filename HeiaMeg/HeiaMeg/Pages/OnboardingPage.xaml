@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:onboarding="clr-namespace:HeiaMeg.ViewModels.Items.Onboarding;assembly=HeiaMeg"
+             xmlns:viewModels="clr-namespace:HeiaMeg.ViewModels;assembly=HeiaMeg"
+             xmlns:base="clr-namespace:HeiaMeg.ViewControls.Base;assembly=HeiaMeg"
+             xmlns:onboarding1="clr-namespace:HeiaMeg.Pages.Onboarding;assembly=HeiaMeg"
+             ios:Page.UseSafeArea="true"
+             x:Class="HeiaMeg.Pages.OnboardingPage"
+             BackgroundColor="{x:Static resources:Colors.OnboardingBackground}">
+
+    <ContentPage.BindingContext>
+        <viewModels:OnboardingViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <base:TemplatedContentView x:Name="OnboardingView"
+                                       BindingContext="{Binding CurrentPage}">
+
+                <base:TemplatedContentView.DataTemplateSelector>
+                    <onboarding:OnboardingDataTemplateSelector>
+
+                        <onboarding:OnboardingDataTemplateSelector.OnboardingTemplate>
+                            <DataTemplate>
+                                <onboarding1:OnboardingWelcomeView/>
+                            </DataTemplate>
+                        </onboarding:OnboardingDataTemplateSelector.OnboardingTemplate>
+
+                        <onboarding:OnboardingDataTemplateSelector.ThemeSelectionTemplate>
+                            <DataTemplate>
+                                <onboarding1:OnboardingThemeSelectionView />
+                            </DataTemplate>
+                        </onboarding:OnboardingDataTemplateSelector.ThemeSelectionTemplate>
+
+                        <onboarding:OnboardingDataTemplateSelector.TermsTemplate>
+                            <DataTemplate>
+                                <onboarding1:OnboardingTermsView/>
+                            </DataTemplate>
+                        </onboarding:OnboardingDataTemplateSelector.TermsTemplate>
+
+                    </onboarding:OnboardingDataTemplateSelector>
+                </base:TemplatedContentView.DataTemplateSelector>
+            </base:TemplatedContentView>
+
+            <Grid x:Name="NextButton"
+                  HorizontalOptions="End"
+                  VerticalOptions="End"
+                  HeightRequest="40"
+                  Margin="20"
+                  IsEnabled="{Binding ButtonIsValid}"
+                  AutomationProperties.IsInAccessibleTree="true"
+                  TranslationY="100">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NextButton_OnClicked"/>
+                </Grid.GestureRecognizers>
+                <BoxView HeightRequest="40"
+                         CornerRadius="20" 
+                         HorizontalOptions="Fill"
+                         Color="{x:Static resources:Colors.OnboardingBackground}"
+                         />
+                <BoxView HeightRequest="40"
+                         CornerRadius="20"
+                         HorizontalOptions="Fill"
+                         Opacity="{Binding ButtonIsValid, Converter={x:Static resources:Converters.BooleanToDoubleConverter}, ConverterParameter=0.4|1}"
+                         Color="{x:Static resources:Colors.OnboardingSelected}"
+                         />
+                <Label Text="Neste"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       Margin="40, 0"/>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

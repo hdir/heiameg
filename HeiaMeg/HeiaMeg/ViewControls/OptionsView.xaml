@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid  xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:message="clr-namespace:HeiaMeg.ViewModels.Items.Message;assembly=HeiaMeg"
+       mc:Ignorable="d"
+       x:Class="HeiaMeg.ViewControls.OptionsView"
+       VerticalOptions="Fill"
+       HorizontalOptions="Fill"
+       ColumnSpacing="0"
+       Padding="0"
+       Margin="0"
+       d:DataContext="{d:DesignInstance message:MessageViewModel}">
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+</Grid>

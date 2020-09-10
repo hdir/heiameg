@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:pages="clr-namespace:HeiaMeg.Pages;assembly=HeiaMeg"
+       xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+       mc:Ignorable="d"
+       x:Class="HeiaMeg.Pages.MainPage"
+       NavBarIsVisible="False"
+       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+       xmlns:viewModels="clr-namespace:HeiaMeg.ViewModels;assembly=HeiaMeg"
+       ios:Page.UseSafeArea="true"
+       TabBarBackgroundColor="{x:Static resources:Colors.TabBottomBackground}"
+       TabBarForegroundColor="{x:Static resources:Colors.TabBottomForegroundActive}"
+       TabBarUnselectedColor="{x:Static resources:Colors.TabBottomForeground}"
+       TabBarTitleColor="{x:Static resources:Colors.TabBottomForegroundActive}"
+       BackgroundColor="{x:Static resources:Colors.Background}">
+
+    <Shell.BindingContext>
+        <viewModels:MainViewModel />
+    </Shell.BindingContext>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <TabBar>
+        <Tab Title="{x:Static resources:AppText.tab_archive}"
+             Icon="tab_speechbubble.png"
+             Route="{x:Static resources:Routes.Archive}"
+             TabIndex="1">
+            <ShellContent>
+                <pages:ArchivePage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="{x:Static resources:AppText.tab_favorites}"
+             Icon="tab_favorite"
+             Route="{x:Static resources:Routes.Favorite}"
+             TabIndex="2">
+            <ShellContent>
+                <pages:FavoritesPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="{x:Static resources:AppText.tab_settings}"
+             Icon="tab_settings.png"
+             Route="{x:Static resources:Routes.Settings}"
+             TabIndex="3">
+            <ShellContent>
+                <pages:SettingsPage />
+            </ShellContent>
+        </Tab>
+    </TabBar>
+
+</Shell>

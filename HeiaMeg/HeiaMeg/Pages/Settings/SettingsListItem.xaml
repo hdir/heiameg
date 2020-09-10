@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+      xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+      xmlns:settings="clr-namespace:HeiaMeg.ViewModels.Items.Settings;assembly=HeiaMeg"
+      xmlns:utils="clr-namespace:HeiaMeg.Utils;assembly=HeiaMeg"
+      mc:Ignorable="d"
+      x:Class="HeiaMeg.Pages.Settings.SettingsListItem"
+      d:DataContext="{d:DesignInstance settings:SettingsItemViewModel}"
+      >
+
+  <Grid.GestureRecognizers>
+    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+  </Grid.GestureRecognizers>
+
+  <!--TEXT-->
+  <Label VerticalOptions="Center"
+         Text="{Binding Title}"
+         TextColor="{x:Static resources:Colors.SettingsText}"
+         FontSize="{x:Static resources:Sizes.TextMedium}"
+         IsVisible="{Binding Source={x:Static utils:Accessibility.IsEnabled}, Converter={x:Static resources:Converters.InvertedBooleanConverter}}"
+         FontAttributes="Bold" />
+  <!--ACCESSIBILITY BUTTON-->
+  <Grid
+      IsVisible="{x:Static utils:Accessibility.IsEnabled}">
+      <Button VerticalOptions="Center"
+              Text="{Binding Title}"
+              BackgroundColor="Transparent"
+              Clicked="TapGestureRecognizer_OnTapped"
+              FontAttributes="Bold" />
+  </Grid>
+  <!--UNDERLINE-->
+  <BoxView VerticalOptions="End"
+           HorizontalOptions="Fill"
+           HeightRequest="1"
+           Margin="0, -1, 0, 1"
+           Color="{x:Static resources:Colors.MessageTitle}" />
+  <!--ARROW-->
+  <forms:SvgCachedImage HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        HeightRequest="18"
+                        Source="{x:Static resources:Images.Back}"
+                        ScaleX="-1"
+                        Aspect="AspectFit" />
+</Grid>

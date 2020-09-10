@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:settings="clr-namespace:HeiaMeg.ViewModels.Items.Settings;assembly=HeiaMeg"
+             xmlns:theme1="clr-namespace:HeiaMeg.ViewModels.Items.Theme;assembly=HeiaMeg"
+             xmlns:custom="clr-namespace:HeiaMeg.ViewControls.Custom;assembly=HeiaMeg"
+             xmlns:theme="clr-namespace:HeiaMeg.Pages.Theme;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance settings:SettingsThemeSelectionViewModel}"
+             x:Class="HeiaMeg.Pages.Settings.SettingsThemeSelectionView">
+    <ContentView.Content>
+
+        <ScrollView  HorizontalOptions="Fill"
+                     VerticalOptions="Fill"
+                     Padding="10, 0">
+            <!-- THEMES -->
+            <custom:ThemeGridView x:Name="ThemeGridView"
+                                  ItemsSource="{Binding Themes}"
+                                  ItemTapped="{Binding ItemTappedCommand}"
+                                  VerticalOptions="Fill"
+                                  HorizontalOptions="Fill"
+                                  ColumnSpacing="10"
+                                  Margin="0, 0, 0, 8">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <custom:ThemeGridView.ItemTemplate>
+                    <DataTemplate>
+                        <theme:ThemeItemView x:Name="ThemeItemTemplateView"
+                                             d:DataContext="{d:DesignInstance theme1:ThemeViewModel}"
+                                             IsSelected="{Binding IsSelected}"
+                                             Icon="{Binding Icon}"
+                                             Text="{Binding Title}"
+                                             CircleColor="{x:Static resources:Colors.SettingsSelectThemeCircleBackground}" />
+                    </DataTemplate>
+                </custom:ThemeGridView.ItemTemplate>
+            </custom:ThemeGridView>
+        </ScrollView>
+
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:onboarding="clr-namespace:HeiaMeg.ViewModels.Items.Onboarding;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             x:Class="HeiaMeg.Pages.Onboarding.OnboardingTermsView">
+    <ContentView.Content>
+        <ScrollView Padding="30">
+            <StackLayout d:DataContext="{d:DesignInstance onboarding:OnboardingTermsViewModel}"
+                         Padding="0, 0, 0, 40">
+
+                <!-- ICON -->
+                <forms:SvgCachedImage HorizontalOptions="End"
+                                      VerticalOptions="Start"
+                                      HeightRequest="70"
+                                      WidthRequest="70"
+                                      Margin="0, 0, 0, -20"
+                                      Aspect="AspectFit"
+                                      Source="{x:Static resources:Images.TabTopIconDefault}" />
+
+                <!-- TEXT -->
+                <StackLayout HorizontalOptions="Fill"
+                             VerticalOptions="CenterAndExpand"
+                             Spacing="40">
+
+                    <!-- TITLE -->
+                    <Label Text="Heia meg trenger tillatelse til å..."
+                           FontSize="{x:Static resources:Sizes.TitleLarge}"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Start"
+                           Margin="0, 0, 10, 0"
+                           TextColor="{x:Static resources:Colors.OnboardingText}">
+                    </Label>
+
+                    <!-- TERMS -->
+
+                    <Grid HorizontalOptions="Fill"
+                          VerticalOptions="Start"
+                          RowSpacing="10"
+                          Padding="10, 8">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- 1 -->
+                        <Label Grid.Column="0"
+                               Grid.Row="0"
+                               Text="Registrere anonym statistikk"
+                               FontSize="{x:Static resources:Sizes.TextMedium}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="{x:Static resources:Colors.OnboardingText}" />
+
+                        <Switch Grid.Column="1"
+                                Grid.Row="0"
+                                IsToggled="{Binding IsStatisticsAccepted}"
+                                VerticalOptions="Center"/>
+
+                        <!-- 2 -->
+                        <Label Grid.Column="0"
+                               Grid.Row="1"
+                               Text="Gi deg tips og påminnelser"
+                               FontSize="{x:Static resources:Sizes.TextMedium}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="{x:Static resources:Colors.OnboardingText}" />
+
+                        <Switch Grid.Column="1"
+                                Grid.Row="1"
+                                VerticalOptions="Center"/>
+
+                        <!-- 3 -->
+                        <Label Grid.Column="0"
+                               Grid.Row="2"
+                               Margin="0, 30, 0, 0"
+                               FontSize="{x:Static resources:Sizes.TextMedium}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               TextColor="{x:Static resources:Colors.OnboardingText}">
+
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Jeg godkjenner "
+                                          FontAttributes="Bold"
+                                          FontSize="18"
+                                          TextColor="{x:Static resources:Colors.OnboardingText}" />
+                                    <Span Text="vilkårene"
+                                          FontAttributes="Bold"
+                                          TextDecorations="Underline"
+                                          FontSize="18">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                    <Span Text=" *"
+                                          FontSize="14"
+                                          TextColor="Red" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Switch Grid.Column="1"
+                                Grid.Row="2"
+                                VerticalOptions="Center"
+                                Margin="0, 30, 0, 0"
+                                IsToggled="{Binding IsTermsAccepted}"/>
+
+                    </Grid>
+
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

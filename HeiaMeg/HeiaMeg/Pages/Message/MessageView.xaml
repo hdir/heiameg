@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:message="clr-namespace:HeiaMeg.ViewModels.Items.Message;assembly=HeiaMeg"
+             xmlns:skia="clr-namespace:HeiaMeg.ViewControls.Skia;assembly=HeiaMeg"
+             xmlns:custom="clr-namespace:HeiaMeg.ViewControls.Custom;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             x:Class="HeiaMeg.Pages.Message.MessageView"
+             d:DataContext="{d:DesignInstance message:MessageViewModel}">
+
+  <Grid RowSpacing="10"
+        Margin="5">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="17" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- BACKGROUND -->
+    <ContentView x:Name="BackgroundViewContainer"
+                 Grid.Row="1"
+                 Grid.RowSpan="2">
+      <skia:MessageBubbleCanvasView Color="{x:Static resources:Colors.MessageBackground}"
+                                    CornerRadius="5"
+                                    Opacity="0.95"
+                                    Style="Default" />
+    </ContentView>
+
+    <!-- TITLE -->
+    <ContentView x:Name="TitleViewContainer"
+                 Padding="25, 0"
+                 Grid.Row="0"
+                 Grid.RowSpan="2"
+                 VerticalOptions="Fill"
+                 HorizontalOptions="Fill"
+                 InputTransparent="True">
+
+      <!-- TOP ICON -->
+      <Grid HorizontalOptions="Start"
+            VerticalOptions="Start"
+            HeightRequest="54"
+            WidthRequest="54">
+        <skia:CircleCanvasView x:Name="IconBackground"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               Color="{x:Static resources:Colors.MessageIconBackground}" />
+
+        <forms:SvgCachedImage HorizontalOptions="Center"
+                              VerticalOptions="Center"
+                              HeightRequest="25"
+                              WidthRequest="25"
+                              Aspect="AspectFit"
+                              Source="{Binding ImageSource}" />
+      </Grid>
+    </ContentView>
+
+    <!-- MESSAGE -->
+    <ContentView x:Name="MessageViewContainer"
+                 Grid.Row="1"
+                 Padding="25, 40"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Start">
+
+      <Grid HorizontalOptions="Fill"
+            VerticalOptions="Start">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- MESSAGE TEXT -->
+        <Label Grid.Row="0"
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Start"
+               Text="{Binding Text}"
+               FontSize="{x:Static resources:Sizes.TextMedium}" />
+
+        <!-- NEW DOT -->
+        <Grid Grid.Row="0"
+              HorizontalOptions="Start"
+              VerticalOptions="Start"
+              Margin="-20, 3, 0, 0"
+              HeightRequest="{x:Static resources:Sizes.TextMedium}"
+              WidthRequest="20"
+              IsVisible="{Binding IsOpened, Converter={x:Static resources:Converters.InvertedBooleanConverter}}">
+          <skia:CircleCanvasView HorizontalOptions="Center"
+                                 VerticalOptions="Fill"
+                                 WidthRequest="6"
+                                 Color="{x:Static resources:Colors.NewMessageColor}" />
+        </Grid>
+
+        <!-- URL TEXT -->
+        <StackLayout Grid.Row="1"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="-5"
+                     Padding="5"
+                     IsVisible="{Binding LinkText, Converter={x:Static resources:Converters.StringToBooleanConverter}}">
+          <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Url_OnTapped"
+                                  Command="{Binding UrlClickedCommand}" />
+          </StackLayout.GestureRecognizers>
+
+          <Label HorizontalTextAlignment="Start"
+                 VerticalTextAlignment="Start">
+
+            <Label.FormattedText>
+              <FormattedString>
+                <Span Text="{Binding LinkText}"
+                      TextColor="{x:Static resources:Colors.MessageTitle}"
+                      FontSize="{x:Static resources:Sizes.TextMedium}"
+                      TextDecorations="Underline"
+                      FontAttributes="Bold" />
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+
+        </StackLayout>
+      </Grid>
+    </ContentView>
+
+    <!-- OPTIONS -->
+    <custom:AnimatedScaleView x:Name="UtilityModalAnimation"
+                              Grid.Row="0"
+                              Grid.RowSpan="2"
+                              VerticalOptions="End"
+                              HorizontalOptions="Fill"
+                              HeightRequest="{x:Static resources:Sizes.OptionsHeight}"
+                              Margin="15, 0, 15, 15"
+                              EasingIn="{x:Static Easing.SpringOut}"
+                              EasingOut="{x:Static Easing.CubicIn}"
+                              FadeIn="True"
+                              FadeOut="True"
+                              FromScale="0.5"
+                              AnimationTime="200">
+      <custom:AnimatedScaleView.AnchorX>
+        <OnPlatform x:TypeArguments="x:Double">
+          <OnPlatform.Platforms>
+            <On Platform="Android"
+                Value="1" />
+            <On Platform="iOS"
+                Value="0.5" />
+          </OnPlatform.Platforms>
+        </OnPlatform>
+      </custom:AnimatedScaleView.AnchorX>
+      <custom:AnimatedScaleView.AnchorY>
+        <OnPlatform x:TypeArguments="x:Double">
+          <OnPlatform.Platforms>
+            <On Platform="Android"
+                Value="1" />
+            <On Platform="iOS"
+                Value="0.5" />
+          </OnPlatform.Platforms>
+        </OnPlatform>
+      </custom:AnimatedScaleView.AnchorY>
+
+      <ContentView x:Name="UtilityModalViewContainer"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill" />
+
+    </custom:AnimatedScaleView>
+
+    <Grid x:Name="UtilityViewContainer"
+          Grid.Row="3"
+          HorizontalOptions="Fill"
+          VerticalOptions="Center"
+          Margin="0, -12, 0, 0"
+          Padding="25, 0, 15, 8">
+
+      <!--TIME-->
+      <Label HorizontalOptions="Start"
+             VerticalOptions="Center"
+             HorizontalTextAlignment="End"
+             VerticalTextAlignment="Center"
+             Text="{Binding Time, Converter={x:Static resources:Converters.DateTimeToFriendlyDayTimeStringConverter}}"
+             FontSize="{x:Static resources:Sizes.TextSmall}"
+             Opacity="0.6"
+             LineBreakMode="NoWrap" />
+
+      <StackLayout HorizontalOptions="End"
+                   VerticalOptions="Fill"
+                   Orientation="Horizontal"
+                   Spacing="14">
+
+        <!-- BUTTON -->
+        <ContentView x:Name="OptionsButtonView"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center"
+                     HeightRequest="25"
+                     WidthRequest="25">
+
+          <Grid>
+            <Grid.GestureRecognizers>
+              <TapGestureRecognizer Tapped="OptionsButton_OnClicked" />
+            </Grid.GestureRecognizers>
+
+            <forms:SvgCachedImage x:Name="PlusButton"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"
+                                  HeightRequest="25"
+                                  WidthRequest="25"
+                                  Source="{x:Static resources:Images.Plus}" />
+
+            <Label x:Name="Cross"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Opacity="0"
+                   TextColor="{x:Static resources:Colors.Text}"
+                   FontAttributes="Bold"
+                   Margin="-6"
+                   FontSize="22">
+              <Label.Text>&#xFF0B;</Label.Text>
+            </Label>
+
+          </Grid>
+
+        </ContentView>
+
+        <!-- FAVORITE -->
+        <custom:HeartIconView HorizontalOptions="Start"
+                              VerticalOptions="Center"
+                              HeightRequest="25"
+                              WidthRequest="25"
+                              ClickedCommand="{Binding FavoriteCommand}"
+                              IsActive="{Binding IsFavorite}" />
+      </StackLayout>
+    </Grid>
+  </Grid>
+</ContentView>

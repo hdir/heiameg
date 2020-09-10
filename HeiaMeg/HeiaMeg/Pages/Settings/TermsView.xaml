@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             x:Class="HeiaMeg.Pages.Settings.TermsView"
+             AutomationProperties.IsInAccessibleTree="true">
+    <ContentView.Content>
+        <ScrollView HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+            <StackLayout Spacing="18"
+                         Padding="20, 0, 20, 20">
+
+                <!--1-->
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="1. "
+                                  TextColor="Gray" />
+                            <Span Text="{x:Static resources:AppText.terms_1_0_title}"
+                                  FontSize="{x:Static resources:Sizes.TextLarge}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="{x:Static resources:AppText.terms_1_0_text}"
+                       FontSize="{x:Static resources:Sizes.TextSmall}" />
+
+                <BoxView HeightRequest="1"
+                         Color="{x:Static resources:Colors.MessageTitleSplit}" />
+
+                <!--2-->
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="2. "
+                                  TextColor="Gray" />
+                            <Span Text="{x:Static resources:AppText.terms_2_0_title}"
+                                  FontSize="{x:Static resources:Sizes.TextLarge}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FormattedText="{Binding Source={x:Static resources:AppText.terms_2_0_text}, Converter={x:Static resources:Converters.HyperlinkFormattedTextConverter}}"
+                       FontSize="{x:Static resources:Sizes.TextSmall}" />
+
+                <BoxView HeightRequest="1"
+                         Color="{x:Static resources:Colors.MessageTitleSplit}" />
+
+                <!--3-->
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="3. "
+                                  TextColor="Gray" />
+                            <Span Text="{x:Static resources:AppText.terms_3_0_title}"
+                                  FontSize="{x:Static resources:Sizes.TextLarge}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FormattedText="{Binding Source={x:Static resources:AppText.terms_3_0_text}, Converter={x:Static resources:Converters.HyperlinkFormattedTextConverter}}"
+                       FontSize="{x:Static resources:Sizes.TextSmall}" />
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="3.1 "
+                                  TextColor="Gray" />
+                            <Span Text="{x:Static resources:AppText.terms_3_1_title}"
+                                  FontSize="{x:Static resources:Sizes.TextLarge}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FormattedText="{Binding Source={x:Static resources:AppText.terms_3_1_text}, Converter={x:Static resources:Converters.HyperlinkFormattedTextConverter}}"
+                       FontSize="{x:Static resources:Sizes.TextSmall}" />
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="3.2 "
+                                  TextColor="Gray" />
+                            <Span Text="{x:Static resources:AppText.terms_3_2_title}"
+                                  FontSize="{x:Static resources:Sizes.TextLarge}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FormattedText="{Binding Source={x:Static resources:AppText.terms_3_2_text}, Converter={x:Static resources:Converters.HyperlinkFormattedTextConverter}}"
+                       FontSize="{x:Static resources:Sizes.TextSmall}" />
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="3.3 "
+                                  TextColor="Gray" />
+                            <Span Text="{x:Static resources:AppText.terms_3_3_title}"
+                                  FontSize="{x:Static resources:Sizes.TextLarge}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FormattedText="{Binding Source={x:Static resources:AppText.terms_3_3_text}, Converter={x:Static resources:Converters.HyperlinkFormattedTextConverter}}"
+                       FontSize="{x:Static resources:Sizes.TextSmall}" />
+
+                <BoxView HeightRequest="1"
+                         Color="{x:Static resources:Colors.MessageTitleSplit}" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

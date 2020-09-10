@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+                 xmlns:converters="clr-namespace:HeiaMeg.Utils.Converters;assembly=HeiaMeg"
+                 xmlns:system="clr-namespace:System;assembly=netstandard"
+                 mc:Ignorable="d"
+                 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                 xmlns:services="clr-namespace:HeiaMeg.Services;assembly=HeiaMeg"
+                 xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:base="clr-namespace:HeiaMeg.ViewControls.Base;assembly=HeiaMeg"
+                 xmlns:update="clr-namespace:HeiaMeg.ViewModels.Update;assembly=HeiaMeg"
+                 ios:Page.UseSafeArea="true"
+                 x:Class="HeiaMeg.Pages.Modals.UpdatingPage"
+                 BackgroundInputTransparent="False"
+                 CloseWhenBackgroundIsClicked="False">
+
+    <ContentPage.BindingContext>
+        <update:UpdateRoutineViewModel />
+    </ContentPage.BindingContext>
+
+    <Page.Resources>
+        <system:Double x:Key="ViewCellHeight">34</system:Double>
+        <converters:StatusToIconConverter x:Key="StatusToIconConverterKey" />
+        <converters:StatusToColorConverter x:Key="StatusToColorConverterKey" />
+        <converters:StatusToBooleanConverter x:Key="StatusToBooleanConverterKey" />
+        <converters:InvertedBooleanConverter x:Key="InvertedBooleanConverterKey" />
+        <converters:StringToBooleanConverter x:Key="TextToBooleanConverterKey" />
+        <converters:BooleanToDoubleConverter x:Key="BooleanToDoubleConverterKey" />
+    </Page.Resources>
+
+    <pages:PopupPage.Content>
+
+        <Grid HorizontalOptions="Center"
+              VerticalOptions="Center"
+              Margin="20"
+              Padding="20">
+
+            <BoxView CornerRadius="20"
+                     Margin="-20"
+                     BackgroundColor="{x:Static resources:Colors.ModalBackground}" />
+
+            <StackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Orientation="Vertical">
+
+                <Grid HorizontalOptions="Fill"
+                      HeightRequest="120">
+                    <!--FAILED-->
+                    <forms:AnimationView HorizontalOptions="Fill"
+                                         VerticalOptions="Fill"
+                                         Animation="warning.json"
+                                         Speed="1.5"
+                                         AutoPlay="True"
+                                         Loop="False"
+                                         IsVisible="{Binding Status, 
+                                                    Converter={StaticResource StatusToBooleanConverterKey}, 
+                                                    ConverterParameter={x:Static services:Status.Failed}}" />
+
+                    <!--RUNNING-->
+                    <forms:AnimationView HorizontalOptions="Fill"
+                                         VerticalOptions="Fill"
+                                         Animation="refreshing.json"
+                                         AutoPlay="True"
+                                         Loop="True"
+                                         IsVisible="{Binding Status, 
+                                                    Converter={StaticResource StatusToBooleanConverterKey}, 
+                                                    ConverterParameter={x:Static services:Status.Running}}" />
+
+                    <!--COMPLETE-->
+                    <forms:AnimationView HorizontalOptions="Fill"
+                                         VerticalOptions="Fill"
+                                         Animation="complete.json"
+                                         Speed="2"
+                                         AutoPlay="True"
+                                         Loop="False"
+                                         IsVisible="{Binding Status, 
+                                                    Converter={StaticResource StatusToBooleanConverterKey}, 
+                                                    ConverterParameter={x:Static services:Status.Completed}}" />
+                </Grid>
+
+                <ListView x:Name="StepList"
+                          ItemsSource="{Binding Steps}"
+                          BackgroundColor="Transparent"
+                          SeparatorVisibility="None"
+                          Margin="0"
+                          HeightRequest="400"
+                          VerticalOptions="Center"
+                          RowHeight="25"
+                          HorizontalScrollBarVisibility="Never"
+                          VerticalScrollBarVisibility="Never">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Height="{StaticResource ViewCellHeight}">
+                                <StackLayout HorizontalOptions="Fill"
+                                             VerticalOptions="Center">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid  Grid.Column="0"
+                                               VerticalOptions="Fill"
+                                               HorizontalOptions="Fill"
+                                               WidthRequest="30"
+                                               HeightRequest="30">
+
+                                            <!--RUNNING-->
+                                            <ActivityIndicator IsRunning="True"
+                                                               VerticalOptions="Center"
+                                                               HorizontalOptions="End"
+                                                               HeightRequest="14"
+                                                               WidthRequest="14"
+                                                               Color="{x:Static resources:Colors.ModalActivity}"
+                                                               IsVisible="{Binding Status, 
+                                                                           Converter={StaticResource StatusToBooleanConverterKey}, 
+                                                                           ConverterParameter={x:Static services:Status.Running}}" 
+                                                               />
+
+                                            <!--FAILED-->
+                                            <Label HorizontalOptions="End"
+                                                   VerticalOptions="Fill"
+                                                   TextColor="{Binding Status, Converter={StaticResource StatusToColorConverterKey}}"
+                                                   IsVisible="{Binding Status, 
+                                                                           Converter={StaticResource StatusToBooleanConverterKey}, 
+                                                                           ConverterParameter={x:Static services:Status.Failed}}">
+                                                <Label.Text>&#x2717;</Label.Text>
+                                            </Label>
+                                            <!--COMPLETE-->
+                                            <Label HorizontalOptions="End"
+                                                   VerticalOptions="Fill"
+                                                   TextColor="{Binding Status, Converter={StaticResource StatusToColorConverterKey}}"
+                                                   IsVisible="{Binding Status, 
+                                                                           Converter={StaticResource StatusToBooleanConverterKey}, 
+                                                                           ConverterParameter={x:Static services:Status.Completed}}">
+
+                                                <Label.Text>&#x2713;</Label.Text>
+                                            </Label>
+                                        </Grid>
+                                        <StackLayout Grid.Column="1"
+                                                     VerticalOptions="Center"
+                                                     Spacing="-4">
+
+                                            <Label Text="{Binding Text}"
+                                                   TextColor="{x:Static resources:Colors.ModalForeground}"
+                                                   LineBreakMode="TailTruncation" />
+
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Orientation="Horizontal"
+                             Spacing="20"
+                             IsVisible="{Binding Status, Converter={StaticResource StatusToBooleanConverterKey}, ConverterParameter={x:Static services:Status.Failed}}">
+                    <Button Text="Prøv på nytt"
+                            IsVisible="{Binding Status, Converter={StaticResource StatusToBooleanConverterKey}, ConverterParameter={x:Static services:Status.Failed}}"
+                            Command="{Binding RetryCommand}" />
+                    <Button Text="Avbryt"
+                            Clicked="Cancel_OnClicked" />
+                </StackLayout>
+
+            </StackLayout>
+
+        </Grid>
+    </pages:PopupPage.Content>
+
+</pages:PopupPage>

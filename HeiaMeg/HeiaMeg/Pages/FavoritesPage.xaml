@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:HeiaMeg.ViewModels;assembly=HeiaMeg"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:custom="clr-namespace:HeiaMeg.ViewControls.Custom;assembly=HeiaMeg"
+             xmlns:message="clr-namespace:HeiaMeg.Pages.Message;assembly=HeiaMeg"
+             ios:Page.UseSafeArea="true"
+             x:Class="HeiaMeg.Pages.FavoritesPage"
+             BackgroundColor="{x:Static resources:Colors.Background}">
+
+    <ContentPage.BindingContext>
+        <viewModels:FavoritesViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="Fill"
+              HorizontalOptions="Fill"
+              RowSpacing="0">
+
+            <forms:SvgCachedImage Source="{x:Static resources:Images.FavoriteHuge}"
+                                  HorizontalOptions="End"
+                                  VerticalOptions="Start"
+                                  HeightRequest="380"
+                                  WidthRequest="380"
+                                  Aspect="AspectFit"
+                                  CacheType="None"
+                                  TranslationX="220"
+                                  TranslationY="-100" />
+
+            <ScrollView VerticalOptions="Fill"
+                        Margin="0, 60, 0, 0">
+                <message:EmptyMessageView x:Name="EmptyView"
+                                          Title="Ingen favoriserte meldinger"
+                                          Text="Favoriser meldinger du lar deg inspirere av, her vil du ha dem lett tilgjengelig" />
+            </ScrollView>
+
+            <custom:FilteredMessageListView x:Name="FavoriteMessagesView"
+                                            ItemsSource="{x:Static viewModels:MainViewModel.Messages}"
+                                            Filter="{x:Static viewModels:FavoritesViewModel.FavoriteFilter}"
+                                            IsPullToRefreshEnabled="False"
+                                            VerticalOptions="Fill"
+                                            HorizontalOptions="Fill"
+                                            SelectionMode="None"
+                                            BackgroundColor="Transparent"
+                                            HasUnevenRows="True"
+                                            SeparatorVisibility="None">
+
+                <ListView.Header>
+                    <custom:TitleView Title="{x:Static resources:AppText.tab_favorites_title}"
+                                      BackgroundColor="{x:Static resources:Colors.TabBackground}"
+                                      TextColor="{x:Static resources:Colors.TabForeground}"
+                                      ImageSource="{x:Static resources:Images.TabTopIconFavorite}"
+                                      Margin="0, 0, 0, 30" />
+                </ListView.Header>
+
+                <ListView.Footer>
+                    <StackLayout HeightRequest="14" />
+                </ListView.Footer>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <message:MessageViewViewCell>
+                            <message:MessageView Margin="10, 10, 10, 0">
+                                <message:MessageView.OptionsButton>
+                                    <Grid>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Share_OnTapped" />
+                                        </Grid.GestureRecognizers>
+
+                                        <forms:SvgCachedImage HorizontalOptions="Center"
+                                                              VerticalOptions="Center"
+                                                              HeightRequest="25"
+                                                              WidthRequest="25"
+                                                              Source="{x:Static resources:Images.Share}" />
+                                    </Grid>
+                                </message:MessageView.OptionsButton>
+                            </message:MessageView>
+                        </message:MessageViewViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </custom:FilteredMessageListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

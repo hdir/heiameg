@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:skia="clr-namespace:HeiaMeg.ViewControls.Skia;assembly=HeiaMeg"
+             xmlns:utils="clr-namespace:HeiaMeg.Utils;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             x:Class="HeiaMeg.Pages.Theme.ThemeItemView">
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="ItemContainer"
+              Grid.Row="0"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              AutomationProperties.IsInAccessibleTree="true">
+
+            <!-- BACKGROUND -->
+            <skia:CircleCanvasView x:Name="BackgroundView"
+                                   Color="{x:Static resources:Colors.OnboardingSelected}"
+                                   Scale=".98" />
+            <skia:CircleCanvasView x:Name="ForegroundView"
+                                   Color="{Binding CircleColor, Source=this}" />
+
+
+            <!-- CONTENT -->
+            <StackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Spacing="6">
+
+                <!-- ICON -->
+                <forms:SvgCachedImage x:Name="IconView"
+                                      HorizontalOptions="Center"
+                                      HeightRequest="38"
+                                      WidthRequest="38"
+                                      CacheType="None"
+                                      Aspect="AspectFit" />
+
+                <!-- TITLE -->
+                <Label x:Name="TitleLabelView"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       LineHeight="1.1"
+                       FontAttributes="Bold"
+                       TextColor="{x:Static resources:Colors.OnboardingText}"
+                       MaxLines="2"
+                       LineBreakMode="TailTruncation" />
+
+            </StackLayout>
+
+            <!-- CHECKMARK -->
+            <Grid x:Name="CheckmarkView"
+                  VerticalOptions="Start"
+                  HorizontalOptions="End"
+                  HeightRequest="40"
+                  WidthRequest="40"
+                  Padding="0"
+                  Margin="0"
+                  Opacity="0">
+
+                <skia:CircleCanvasView Color="{x:Static resources:Colors.OnboardingSelected}" />
+
+                <forms:SvgCachedImage x:Name="CheckmarkSvg"
+                                      HorizontalOptions="Center"
+                                      VerticalOptions="Center"
+                                      Aspect="AspectFit"
+                                      Margin="2, 2, 0, 0"
+                                      Source="{x:Static resources:Images.Checkmark}" />
+            </Grid>
+        </Grid>
+
+        <!-- LINK -->
+        <Grid x:Name="LinkContainer"
+              Grid.Row="1"
+              HorizontalOptions="Center"
+              VerticalOptions="Fill"
+              Padding="10, 4, 10, 6"
+              AutomationProperties.IsInAccessibleTree="true">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ReadMore_Tapped" />
+            </Grid.GestureRecognizers>
+
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="Fill"
+                   Text="Les mer"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   IsVisible="{Binding Source={x:Static utils:Accessibility.IsEnabled}, Converter={x:Static resources:Converters.InvertedBooleanConverter}}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Les mer"
+                              TextDecorations="Underline"
+                              TextColor="{x:Static resources:Colors.OnboardingText}"
+                              FontSize="12" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Button BackgroundColor="Transparent"
+                    Text="Les mer"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="ReadMore_Tapped"
+                    IsVisible="{x:Static utils:Accessibility.IsEnabled}" />
+        </Grid>
+    </Grid>
+</ContentView>

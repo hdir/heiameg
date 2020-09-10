@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:viewModels="clr-namespace:HeiaMeg.ViewModels;assembly=HeiaMeg"
+             xmlns:custom="clr-namespace:HeiaMeg.ViewControls.Custom;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             BackgroundColor="{x:Static resources:Colors.Background}"
+             x:Class="HeiaMeg.ViewControls.TabItemView">
+    <ContentView.Content>
+        <Grid RowSpacing="0"
+              d:DataContext="{d:DesignInstance viewModels:TabItem}"
+              Padding="10, 0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="3" />
+            </Grid.RowDefinitions>
+
+            <!--minimum-width bugfixer-->
+            <BoxView WidthRequest="50" />
+
+            <Label Grid.Row="0"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding Title}"
+                   FontSize="{x:Static resources:Sizes.TextMedium}"
+                   Opacity="{Binding IsCurrent, Converter={x:Static resources:Converters.BooleanToDoubleConverter}, ConverterParameter=0|1}"
+                   MaxLines="1"
+                   LineBreakMode="NoWrap"/>
+
+            <Label Grid.Row="0"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding Title}"
+                   FontSize="{x:Static resources:Sizes.TextMedium}"
+                   FontAttributes="Bold"
+                   Opacity="{Binding IsCurrent, Converter={x:Static resources:Converters.BooleanToDoubleConverter}, ConverterParameter=1|0}"
+                   MaxLines="1"
+                   LineBreakMode="NoWrap"/>
+
+            <!--FontAttributes="{Binding IsCurrent, Converter={StaticResource BooleanToBoldConverter}, ConverterParameter=true}"-->
+
+            <!--BADGES-->
+            <Grid  Grid.Row="0"
+                   HeightRequest="20"
+                   Margin="0, 4, -10, 0"
+                   HorizontalOptions="End"
+                   VerticalOptions="Start"
+                   IsVisible="{Binding HasBadges}">
+                <Frame BackgroundColor="{x:Static resources:Colors.Badge}"
+                       HasShadow="False"
+                       Padding="7, 2"
+                       CornerRadius="10">
+                    <Label TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="10"
+                           Text="{Binding BadgeCount}" />
+
+                </Frame>
+            </Grid>
+
+            <!--LINE-->
+            <custom:AnimatedScaleView Grid.Row="1"
+                                      VerticalOptions="Fill"
+                                      HeightRequest="2"
+                                      EasingIn="{x:Static Easing.CubicOut}"
+                                      EasingOut="{x:Static Easing.CubicIn}"
+                                      Animate="{Binding IsCurrent}"
+                                      Margin="-10, 0">
+
+                <BoxView HorizontalOptions="Fill"
+                         VerticalOptions="Fill"
+                         Color="{x:Static resources:Colors.TabForeground}" />
+            </custom:AnimatedScaleView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

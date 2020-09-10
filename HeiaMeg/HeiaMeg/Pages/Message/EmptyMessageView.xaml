@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             xmlns:skia="clr-namespace:HeiaMeg.ViewControls.Skia;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             x:Class="HeiaMeg.Pages.Message.EmptyMessageView">
+  <ContentView.Content>
+    <Grid Margin="30" VerticalOptions="Fill">
+
+      <!-- BACKGROUND -->
+      <skia:MessageBubbleCanvasView x:Name="BubbleCanvasView"
+                                    Color="{x:Static resources:Colors.MessageBackground}"
+                                    Style="Circle"
+                                    Margin="-10"/>
+
+      <!-- TEXT -->
+      <StackLayout HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Spacing="15"
+                   Padding="40">
+
+        <Label x:Name="TitleLabel"
+            HorizontalOptions="Fill"
+               VerticalOptions="Start"
+               HorizontalTextAlignment="Center"
+               FontAttributes="Bold"
+               TextColor="{x:Static resources:Colors.MessageTitle}" />
+
+        <BoxView HorizontalOptions="Center"
+                 WidthRequest="220"
+                 HeightRequest="1"
+                 Color="{x:Static resources:Colors.MessageTitleSplit}" />
+
+        <Label x:Name="TextLabel"
+               HorizontalOptions="Fill"
+               VerticalOptions="Start"
+               HorizontalTextAlignment="Center"
+               LineHeight="1.2">
+        </Label>
+
+      </StackLayout>
+
+    </Grid>
+  </ContentView.Content>
+</ContentView>

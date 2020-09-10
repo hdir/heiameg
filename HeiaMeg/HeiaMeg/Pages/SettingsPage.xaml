@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:HeiaMeg.ViewModels;assembly=HeiaMeg"
+             xmlns:resources="clr-namespace:HeiaMeg.Resources;assembly=HeiaMeg"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:forms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:settings1="clr-namespace:HeiaMeg.ViewModels.Items.Settings;assembly=HeiaMeg"
+             xmlns:custom="clr-namespace:HeiaMeg.ViewControls.Custom;assembly=HeiaMeg"
+             xmlns:settings="clr-namespace:HeiaMeg.Pages.Settings;assembly=HeiaMeg"
+             xmlns:base="clr-namespace:HeiaMeg.ViewControls.Base;assembly=HeiaMeg"
+             xmlns:utils="clr-namespace:HeiaMeg.Utils;assembly=HeiaMeg"
+             ios:Page.UseSafeArea="true"
+             x:Class="HeiaMeg.Pages.SettingsPage"
+             x:Name="SettingsPageTag"
+             BackgroundColor="{x:Static resources:Colors.Background}">
+
+  <ContentPage.BindingContext>
+    <viewModels:SettingsViewModel />
+  </ContentPage.BindingContext>
+
+  <ContentPage.Content>
+    <Grid HorizontalOptions="Fill"
+          VerticalOptions="Fill">
+
+      <!-- MASTER VIEW -->
+      <ScrollView x:Name="MasterView"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill">
+
+        <StackLayout Padding="20, 0, 20, 10">
+                    <custom:TitleView Title="{x:Static resources:AppText.tab_settings_title}"
+                            BackgroundColor="{x:Static resources:Colors.TabBackground}"
+                            TextColor="{x:Static resources:Colors.TabForeground}"
+                            ImageSource="{x:Static resources:Images.TabTopIconDefault}"
+                            Margin="-20, 0">
+                        <custom:TitleView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                        </custom:TitleView.GestureRecognizers>
+                    </custom:TitleView>
+
+                    <!--NAME LABEL -->
+          <Label VerticalOptions="Start"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Text="NAVN:"
+                 TextColor="{x:Static resources:Colors.SettingsText}"
+                 FontSize="{x:Static resources:Sizes.TextMedium}"
+                 FontAttributes="Bold" />
+
+          <!--NAME ENTRY-->
+          <Grid HorizontalOptions="Fill"
+                VerticalOptions="Start">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--ENTRY-->
+            <Entry x:Name="NameEntry"
+                   Grid.Column="0"
+                   InputTransparent="{Binding Source={x:Static utils:Accessibility.IsEnabled}, Converter={x:Static resources:Converters.InvertedBooleanConverter}}"
+                   Text="{Binding Username}"
+                   FontSize="{x:Static resources:Sizes.TitleLarge}"
+                   FontAttributes="Bold"
+                   Keyboard="Text"
+                   IsSpellCheckEnabled="False"
+                   IsTextPredictionEnabled="False"
+                   TextColor="{x:Static resources:Colors.NewMessageColor}">
+              <Entry.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                  <On Platform="Android"
+                      Value="0, -3" />
+                  <On Platform="iOS"
+                      Value="0, 3, 0, 8" />
+                </OnPlatform>
+              </Entry.Margin>
+            </Entry>
+
+            <!--PEN ICON-->
+            <forms:SvgCachedImage x:Name="PenIcon"
+                                  Grid.Column="1"
+                                  HorizontalOptions="End"
+                                  VerticalOptions="Center"
+                                  HeightRequest="25"
+                                  Source="{x:Static resources:Images.Pen}"
+                                  Aspect="AspectFit">
+              <forms:SvgCachedImage.GestureRecognizers>
+                <TapGestureRecognizer Tapped="EditName_OnTapped" />
+              </forms:SvgCachedImage.GestureRecognizers>
+            </forms:SvgCachedImage>
+
+            <!--LINE-->
+            <!--<BoxView Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="Fill"
+                                 HeightRequest="1"
+                                 Color="{x:Static resources:Colors.MessageTitle}" />-->
+
+          </Grid>
+
+          <!--SETTINGS LIST-->
+          <StackLayout Spacing="0"
+                       VerticalOptions="CenterAndExpand">
+
+            <!-- top line -->
+            <BoxView VerticalOptions="End"
+                     HorizontalOptions="Fill"
+                     HeightRequest="1"
+                     Color="{x:Static resources:Colors.MessageTitle}" />
+
+            <Grid x:Name="SettingsGrid"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Center"
+                  RowSpacing="0"
+                  HeightRequest="280">
+
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+
+              <settings:SettingsListItem Grid.Row="0"
+                                         BindingContext="{Binding ThemeSelectionSetting}" />
+              <settings:SettingsListItem Grid.Row="1"
+                                         BindingContext="{Binding AboutSetting}" />
+              <settings:SettingsListItem Grid.Row="2"
+                                         BindingContext="{Binding TermsSetting}" />
+              <settings:SettingsListItem Grid.Row="3"
+                                         BindingContext="{Binding FeedbackSetting}" />
+
+              <!--ANALYTICS ACCEPT-->
+              <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                       Text="Registrere anonym statistikk"
+                       FontSize="{x:Static resources:Sizes.TextMedium}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center" />
+
+                <Switch Grid.Column="1"
+                        IsToggled="{Binding HasAcceptedAnalytics}"
+                        VerticalOptions="Center"/>
+              </Grid>
+            </Grid>
+
+            <!-- bottom line -->
+            <BoxView VerticalOptions="Start"
+                     HorizontalOptions="Fill"
+                     HeightRequest="1"
+                     Color="{x:Static resources:Colors.MessageTitle}" />
+
+          </StackLayout>
+
+          <!--BOTTOM CREDIT-->
+          <Label VerticalOptions="End"
+                 HorizontalOptions="Center"
+                 HorizontalTextAlignment="Center"
+                 Text="Helsedirektoratet har utviklet og er ansvarlig for appen."
+                 TextColor="{x:Static resources:Colors.MessageTitle}"
+                 FontSize="{x:Static resources:Sizes.TextSmall}"
+                 FontAttributes="Italic" />
+
+        </StackLayout>
+      </ScrollView>
+
+      <!-- DETAIL VIEW -->
+      <Grid x:Name="DetailView">
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- TITLE -->
+        <Grid Grid.Row="0"
+              HorizontalOptions="Fill"
+              VerticalOptions="Start"
+              ColumnSpacing="10"
+              Padding="20, 10">
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="28" />
+          </Grid.ColumnDefinitions>
+          <forms:SvgCachedImage Grid.Column="0"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Fill"
+                                HeightRequest="28"
+                                Source="{x:Static resources:Images.Back}"
+                                Aspect="AspectFit">
+            <forms:SvgCachedImage.GestureRecognizers>
+              <TapGestureRecognizer Tapped="AnimateOut" />
+            </forms:SvgCachedImage.GestureRecognizers>
+
+          </forms:SvgCachedImage>
+
+          <Label Grid.Column="1"
+                 Text="{Binding DetailViewTitle}"
+                 FontSize="{x:Static resources:Sizes.Title}"
+                 TextColor="{x:Static resources:Colors.OnboardingText}"
+                 FontAttributes="Bold"
+                 HorizontalOptions="Center"
+                 MaxLines="1"
+                 LineBreakMode="TailTruncation" />
+        </Grid>
+
+        <!-- CONTENT -->
+        <base:TemplatedContentView Grid.Row="1"
+                                   BindingContext="{Binding Selected}"
+                                   ViewIsBusy="{Binding Source={Reference SettingsPageTag}, Path=ViewIsBusy, Mode=TwoWay}">
+          <base:TemplatedContentView.DataTemplateSelector>
+            <settings1:SettingDataTemplateSelector>
+
+              <!--THEME-->
+              <settings1:SettingDataTemplateSelector.ChangeThemesTemplate>
+                <DataTemplate>
+                  <settings:SettingsThemeSelectionView />
+                </DataTemplate>
+              </settings1:SettingDataTemplateSelector.ChangeThemesTemplate>
+
+              <!--ABOUT-->
+              <settings1:SettingDataTemplateSelector.AboutTemplate>
+                <DataTemplate>
+                  <settings:AboutView />
+                </DataTemplate>
+              </settings1:SettingDataTemplateSelector.AboutTemplate>
+
+              <!--TERMS-->
+              <settings1:SettingDataTemplateSelector.TermsTemplate>
+                <DataTemplate>
+                  <settings:TermsView />
+                </DataTemplate>
+              </settings1:SettingDataTemplateSelector.TermsTemplate>
+
+              <!--FEEDBACK-->
+              <settings1:SettingDataTemplateSelector.FeedbackTemplate>
+                <DataTemplate>
+                  <settings:QuestbackWebView />
+                </DataTemplate>
+              </settings1:SettingDataTemplateSelector.FeedbackTemplate>
+
+              <!--DEBUG-->
+              <settings1:SettingDataTemplateSelector.DebugTemplate>
+                  <DataTemplate>
+                      <settings:DebugView />
+                  </DataTemplate>
+              </settings1:SettingDataTemplateSelector.DebugTemplate>
+
+            </settings1:SettingDataTemplateSelector>
+          </base:TemplatedContentView.DataTemplateSelector>
+        </base:TemplatedContentView>
+
+        <!-- Swipe gesture only works on iOS -->
+        <Grid.GestureRecognizers>
+          <SwipeGestureRecognizer Direction="Right"
+                                  Swiped="SwipeGestureRecognizer_OnSwiped" />
+        </Grid.GestureRecognizers>
+      </Grid>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>
